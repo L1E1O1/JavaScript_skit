@@ -50,10 +50,19 @@ const quotes = [
 "Change your thoughts and you change your world. - Norman Vincent Peale",
 "The secret of getting ahead is getting started. - Mark Twain"
 ];
-let Array_length = quotes.length;
- let random_quote = Math.random(quotes);
+
+//let randomIndex = Math.floor(Math.random() * quotes.length); // Generate random index
+//let randomQuote = quotes[randomIndex]; // Retrieve quote by index
 
 
 
-console.log(quotes);
-console.log(random_quote);
+
+function qouteTimer(){
+let randomIndex = Math.floor(Math.random() * quotes.length); // Generate random index
+let randomQuote = quotes[randomIndex]; // Retrieve quote by index
+console.log(randomQuote);
+document.getElementById("qoutes").innerHTML = randomQuote;
+}
+
+const timer = setInterval(qouteTimer, 30000);
+
