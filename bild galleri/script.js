@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     const data = await loadFile("data.json");
 
-    const thunbnail = document.getElementById("myloop");
-    const largbild = document.getElementById("large-image");
+    const thunbnail = document.getElementById("bilder");
+    const largbild = document.getElementById("stor-bild");
 
 
     data.forEach(function(item) {
