@@ -1,0 +1,103 @@
+
+[
+    {
+        "desc": "A peaceful view of nature.",
+        "smallPic": "https://picsum.photos/id/1/100",
+        "bigPic": "https://picsum.photos/id/1/800/450"
+    },
+    {
+        "desc": "City lights at night glow.",
+        "smallPic": "https://picsum.photos/id/72/100",
+        "bigPic": "https://picsum.photos/id/72/800/450"
+    },
+    {
+        "desc": "Mountains under clear sky.",
+        "smallPic": "https://picsum.photos/id/35/100",
+        "bigPic": "https://picsum.photos/id/35/800/450"
+    },
+    {
+        "desc": "Close-up of vibrant flowers.",
+        "smallPic": "https://picsum.photos/id/102/100",
+        "bigPic": "https://picsum.photos/id/102/800/450"
+    },
+    {
+        "desc": "Sunset over the calm lake.",
+        "smallPic": "https://picsum.photos/id/154/100",
+        "bigPic": "https://picsum.photos/id/154/800/450"
+    },
+    {
+        "desc": "Lively downtown street view.",
+        "smallPic": "https://picsum.photos/id/156/100",
+        "bigPic": "https://picsum.photos/id/156/800/450"
+    },
+    {
+        "desc": "A serene forest pathway.",
+        "smallPic": "https://picsum.photos/id/7/100",
+        "bigPic": "https://picsum.photos/id/7/800/450"
+    },
+    {
+        "desc": "Ocean waves crashing ashore.",
+        "smallPic": "https://picsum.photos/id/88/100",
+        "bigPic": "https://picsum.photos/id/88/800/450"
+    },
+    {
+        "desc": "Historic architecture downtown.",
+        "smallPic": "https://picsum.photos/id/200/100",
+        "bigPic": "https://picsum.photos/id/200/800/450"
+    },
+    {
+        "desc": "Snow-covered trees in winter.",
+        "smallPic": "https://picsum.photos/id/10/100",
+        "bigPic": "https://picsum.photos/id/10/800/450"
+    },
+    {
+        "desc": "Rural countryside landscape.",
+        "smallPic": "https://picsum.photos/id/11/100",
+        "bigPic": "https://picsum.photos/id/11/800/450"
+    },
+    {
+        "desc": "Golden autumn leaves falling.",
+        "smallPic": "https://picsum.photos/id/12/100",
+        "bigPic": "https://picsum.photos/id/12/800/450"
+    },
+    {
+        "desc": "Brightly painted cityscape.",
+        "smallPic": "https://picsum.photos/id/13/100",
+        "bigPic": "https://picsum.photos/id/13/800/450"
+    },
+    {
+        "desc": "Starry sky over the hills.",
+        "smallPic": "https://picsum.photos/id/14/100",
+        "bigPic": "https://picsum.photos/id/14/800/450"
+    },
+    {
+        "desc": "Blooming garden in spring.",
+        "smallPic": "https://picsum.photos/id/15/100",
+        "bigPic": "https://picsum.photos/id/15/800/450"
+    },
+    {
+        "desc": "A bustling city in motion.",
+        "smallPic": "https://picsum.photos/id/16/100",
+        "bigPic": "https://picsum.photos/id/16/800/450"
+    },
+    {
+        "desc": "Foggy morning forest scene.",
+        "smallPic": "https://picsum.photos/id/17/100",
+        "bigPic": "https://picsum.photos/id/17/800/450"
+    },
+    {
+        "desc": "Beautiful sandy beach sunset.",
+        "smallPic": "https://picsum.photos/id/64/100",
+        "bigPic": "https://picsum.photos/id/64/800/450"
+    },
+    {
+        "desc": "Clouds over vast desert.",
+        "smallPic": "https://picsum.photos/id/19/100",
+        "bigPic": "https://picsum.photos/id/19/800/450"
+    },
+    {
+        "desc": "Vibrant market with colors.",
+        "smallPic": "https://picsum.photos/id/20/100",
+        "bigPic": "https://picsum.photos/id/20/800/450"
+    }
+]
