@@ -58,6 +58,7 @@ function updateStorage(){
         console.log("Retrieved notes from localStorage");
        }
         //maybe await fetch might work here to retrieve notes from the local storage
+        //maybe take away the showNotes () from every function so that it doesn't refresh every time
     }
     
     showNotes();
