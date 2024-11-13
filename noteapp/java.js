@@ -17,7 +17,7 @@ function showNotes() {
         inputBox.className = "input-box";
         inputBox.setAttribute("contenteditable", "true");
         let img = document.createElement("img");
-        img.src = "http://127.0.0.1:5500/images/delete.jpg"; 
+        img.src = "/noteapp/images/delete.jpg"; 
 
         inputBox.appendChild(img);
         notesContainer.appendChild(inputBox);
