@@ -17,29 +17,13 @@ function showNotes() {
         inputBox.className = "input-box";
         inputBox.setAttribute("contenteditable", "true");
         let img = document.createElement("img");
-        img.src = "/noteapp/images/delete.jpg"; 
+        img.src = "http://127.0.0.1:5500/images/delete.jpg"; 
 
         inputBox.appendChild(img);
         notesContainer.appendChild(inputBox);
         console.log(localStorage.getItem(note));
     });
-    /**
-    if(localStorage.getItem("notes") === null){
-     const storedNotes = localStorage.getItem("notes") || "";
-     notesContainer.innerHTML = storedNotes;
-     console.log("Retrieved notes from localStorage");
-     console.log(localStorage.getItem("notes"));
-    } 
-    else if(localStorage.getItem("notes")!== null)  {
-     notesContainer.innerHTML = localStorage.getItem("notes");
-     console.log("Retrieved notes from localStorage code is not null");
-     console.log(localStorage.getItem("notes"));
-    }
-      */
-    //potensiel lösning
-     //maybe await fetch might work here to retrieve notes from the local storage
-     //maybe take away the showNotes () from every function so that it doesn't refresh every time
-    // maybe add a new button
+ 
  }
 var notesContainer;
 var createBtn;
@@ -86,7 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
             //updateStorage();
         }
     })
-    
+    /**
+ * potentiall solutions 
+ * array to sort array of notes based on the last modification date????????
+ * interface to store notes in a more secure way and easy way to retrieve them and delete them????????
+ */
      
   showNotes();
 });
+
+
