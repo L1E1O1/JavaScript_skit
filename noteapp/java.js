@@ -33,8 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
     createBtn = document.querySelector(".btn");
     createBtn.addEventListener('click', function () {
         amountOfNotes++;
-        console.log("new!");
-      "contenteditable", "true");
+
+        let inputBox = document.createElement("p");
+        inputBox.dataset.noteNr = "Notes-" + amountOfNotes;
+        inputBox.className = "input-box";
+        inputBox.setAttribute("contenteditable", "true");
         let img = document.createElement("img");
         img.src = "/noteapp/images/delete.jpg";  
 
@@ -42,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         notesContainer.appendChild(inputBox);
         updateStorage(inputBox);
     });
-    console.log("!");
+
 
     notesContainer.addEventListener('click', function(del){
         console.log(del.target.parentElement);
@@ -71,13 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
  * potentiall solutions 
  * array to sort array of notes based on the last modification date????????
  * interface to store notes in a more secure way and easy way to retrieve them and delete them????????
- * problem är kanske delete knappen notes
  */
      
   showNotes();
 });
 
-  let inputBox = document.createElement("p");
-        inputBox.dataset.noteNr = "Notes-" + amountOfNotes;
-        inputBox.className = "input-box";
-        inputBox.setAttribute(
+
