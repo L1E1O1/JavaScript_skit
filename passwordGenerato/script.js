@@ -30,3 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 })
+
+/**
+ * problem:
+ * the copy button does not work as expected, it should select the password and copy it to the clipboard, but it doesn't.
+ */
