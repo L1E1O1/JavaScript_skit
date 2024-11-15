@@ -7,6 +7,15 @@ function updateStorage(curNotes){
 
 function showNotes() {
     const notes = Object.keys(localStorage);
+    const highestAmountOfNotes = Math.max(amountOfNotes);
+console.log("det här är största nummret" + highestAmountOfNotes);
+
+    
+for (let i = 1; i < amountOfNotes.length; i++) {
+    if ( amountOfNotes[i] > highestAmountOfNotes) {
+      highestAmountOfNotes = numbers[i];
+    }
+  }
     notes.forEach(function(note){
         amountOfNotes++;
         //KOLLA VILKEN SOM ÄR DET HÖGST NOTES-SIFFRAN OCH GÖR amountOfNotes till den + 1
@@ -21,7 +30,7 @@ function showNotes() {
 
         inputBox.appendChild(img);
         notesContainer.appendChild(inputBox);
-        console.log(localStorage.getItem(note));
+       // console.log(localStorage.getItem(note));
     });
  
  }
@@ -33,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
     createBtn = document.querySelector(".btn");
     createBtn.addEventListener('click', function () {
         amountOfNotes++;
+        
+
 
         let inputBox = document.createElement("p");
         inputBox.dataset.noteNr = "Notes-" + amountOfNotes;
@@ -74,9 +85,9 @@ document.addEventListener("DOMContentLoaded", function () {
  * potentiall solutions 
  * array to sort array of notes based on the last modification date????????
  * interface to store notes in a more secure way and easy way to retrieve them and delete them????????
+ * har fixat typ så att den kan känna igen största notes-siffra
  */
      
   showNotes();
 });
-
 
