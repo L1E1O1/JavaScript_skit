@@ -2,9 +2,11 @@ var notesContainer;
 var createBtn;
 var amountOfNotes = 0;
 
+
+console.log(config.apiKey);
 document.addEventListener("DOMContentLoaded", function () {
-    notesContainer = document.querySelector(".container");
-    createBtn = document.querySelector(".btn");
+    notesContainer = document.querySelector(".notes-container");
+    createBtn = document.querySelector(".notes-btn");
 
     function updateStorage(curNotes) {
         localStorage.setItem(curNotes.dataset.noteNr, curNotes.innerText);
@@ -76,4 +78,46 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     showNotes();
+
+
+  document.getElementById("aiBtn").addEventListener('click', async function () {
+    console.log("AI is generating notes..");
+    const prompt = "can you make a test out of these notes?"; // + notes id
+    const url = `https://api.openai.com/v1/engines/davinci/completions`;
+
+
+    aiTestContainer = document.getElementById("aiTestContainer");
+    let aiInputBox = document.createElement("p");
+    aiInputBox.className = "ai-input-box"
+   // aiInputBox.innerText = "working";
+    // aiInputBox.setAttribute("contenteditable", "true"); ksk vill ha d vi får se
+    
+    aiTestContainer.appendChild(aiInputBox);
+
+      try {
+                const response =  await fetch("https://api.openai.com/v1/chat/completions", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": 'Bearer ' + config.apiKey
+                    },
+                    body: JSON.stringify({
+                        model: "gpt-3.5-turbo",
+                        messages: [
+                            { role: "system", content: "You are a helpful assistant." },
+                            { role: "user", content: prompt }
+                        ]
+                    })
+                });
+
+             if (!response.ok) {
+                 throw new Error(`HTTP error! status: ${response.status}`);
+             }
+            } catch (error) {
+                console.error(error);
+            }
+        
+});
+
+
 });
