@@ -1,6 +1,7 @@
 var notesContainer;
 var createBtn;
 var amountOfNotes = 0;
+let highestNoteNumber = 0;
 
 
 console.log(config.apiKey);
@@ -8,14 +9,16 @@ document.addEventListener("DOMContentLoaded", function () {
     notesContainer = document.querySelector(".notes-container");
     createBtn = document.querySelector(".notes-btn");
 
+
+    //store notes in a local storage
     function updateStorage(curNotes) {
         localStorage.setItem(curNotes.dataset.noteNr, curNotes.innerText);
         console.log("Storage updated");
         console.log(localStorage.getItem(curNotes.dataset.noteNr));
     }
-
+//makes sure that you cant create a new note 1 if there is already a note with the same number
+// makes sure to know when a note is deleted and created
     function findHighestNoteNumber() {
-        let highestNoteNumber = 0;
         for (const key of Object.keys(localStorage)) {
             const noteNumber = parseInt(key.replace("Notes-", ""), 10);
             if (!isNaN(noteNumber) && noteNumber > highestNoteNumber) {
@@ -23,7 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
         return highestNoteNumber;
+
     }
+//show's notes stored in local storage
 
     function showNotes() {
         amountOfNotes = findHighestNoteNumber() + 1;
@@ -43,13 +48,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    //creates a new note and updates local storage when it's done
     createBtn.addEventListener("click", function () {
         let newNoteNumber = amountOfNotes++;
         let inputBox = document.createElement("p");
-        inputBox.dataset.noteNr = "Notes-" + newNoteNumber;
+        inputBox.dataset.noteNr = "Notes-" + newNoteNumber; //note id
         inputBox.className = "input-box";
         inputBox.setAttribute("contenteditable", "true");
-
         let img = document.createElement("img");
         img.src = "/noteapp/images/delete.jpg";
 
@@ -57,6 +62,18 @@ document.addEventListener("DOMContentLoaded", function () {
         notesContainer.appendChild(inputBox);
         updateStorage(inputBox);
     });
+
+
+        //reads the note id when clicked and logs it
+
+    notesContainer.addEventListener('click', function (event) {
+        if (event.target.classList.contains('input-box')) {
+            let noteKey = event.target.dataset.noteNr;
+            console.log(noteKey );
+        }
+    });
+
+// deletes a note and updates local storage when it's done
 
     notesContainer.addEventListener("click", function (del) {
         if (del.target.tagName === "IMG") {
@@ -70,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+// allows users to press enter to create a new line when editing a note
+
     document.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             document.execCommand("insertLineBreak");
@@ -79,12 +98,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showNotes();
 
+//sends notes to AI for to generate AI test
 
   document.getElementById("aiBtn").addEventListener('click', async function () {
     console.log("AI is generating notes..");
-    const prompt = "can you make a test out of these notes?"; // + notes id
+    const prompt = "can you make a test out of these notes?"; 
     const url = `https://api.openai.com/v1/engines/davinci/completions`;
-
+     
+    //console.log (prompt);
 
     aiTestContainer = document.getElementById("aiTestContainer");
     let aiInputBox = document.createElement("p");
