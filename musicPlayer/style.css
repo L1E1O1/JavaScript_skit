@@ -1,0 +1,34 @@
+*{
+    margin:0px;
+    padding:0px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing:border-box;
+}
+
+.container{
+    width: 100%;
+    height:100vh;
+    background: linear-gradient(135deg, #cc0044, #ffb3cc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.music-player{
+background: #fff;
+width:400px;
+padding: 25px 35px;
+text-align: center;
+}
+
+button{
+    outline: none;
+    border: 1 px solid black;
+    border-radius: 50%;
+    padding : 5px;
+    background: transparent;
+    color:aqua;
+    cursor: pointer;
+}
