@@ -17,18 +17,22 @@
 
 
 .music-player{
-background: #fff;
+background: #660066;
 width:400px;
+min-height: 60vh;
 padding: 25px 35px;
 text-align: center;
+border-radius: 10px;
 }
 
-button{
+.music-player button{
+    margin-bottom: 60px;
     outline: none;
     border: 1 px solid black;
     border-radius: 50%;
     padding : 5px;
     background: transparent;
-    color:aqua;
+    color:#fff;
     cursor: pointer;
+    box-shadow: 5px solid black;
 }
