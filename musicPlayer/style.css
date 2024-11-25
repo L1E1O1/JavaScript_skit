@@ -16,6 +16,17 @@
 }
 
 
+.controls{
+    display: flex;
+    justify-content:space-evenly;
+    padding: 10px;
+}
+
+.controls nav{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
 .music-player{
 background: #660066;
 width:400px;
