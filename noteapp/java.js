@@ -107,16 +107,28 @@ document.addEventListener("DOMContentLoaded", function () {
      
     //console.log (prompt);
 
-    aiTestContainer = document.getElementById("aiTestContainer");
-    let aiInputBox = document.createElement("p");
-    aiInputBox.className = "ai-input-box"
+
+// ska försöka göra en function som creatar ai containern helt
+
+
+
+
    // aiInputBox.innerText = "working";
     // aiInputBox.setAttribute("contenteditable", "true"); ksk vill ha d vi får se
-    
-    aiTestContainer.appendChild(aiInputBox);
+   const aiTestContainer = document.getElementById("aiTestContainer");
+   const aiContainer = document.createElement('div');
+   let aiInputBox = document.createElement("p");
+
+
+aiContainer.className = 'ai-container';
+aiInputBox.className = "ai-input-box";
+
+aiContainer.appendChild(aiTestContainer);
+aiTestContainer.appendChild(aiInputBox);
+
 
       try {
-                const response =  await fetch("https://api.openai.com/v1/chat/completions", {
+                const response =  await fetch(url, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -130,15 +142,23 @@ document.addEventListener("DOMContentLoaded", function () {
                         ]
                     })
                 });
+                
+                if (!response.ok) {
+                    const errorDetails = await response.json();
+                    console.error("Error:", response.status, errorDetails);
+                } else {
+                    const data = await response.json();
+                    console.log("Response:", data);
+                }
 
-             if (!response.ok) {
-                 throw new Error(`HTTP error! status: ${response.status}`);
-             }
             } catch (error) {
                 console.error(error);
             }
         
 });
+
+
+
 
 
 });
