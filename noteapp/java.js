@@ -2,7 +2,8 @@ var notesContainer;
 var createBtn;
 var amountOfNotes = 0;
 let highestNoteNumber = 0;
-
+let aiBtn = document.getElementById('aiBtn');
+let btnDiv = document.querySelector('.buttons');
 
 console.log(config.apiKey);
 document.addEventListener("DOMContentLoaded", function () {
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const notes = Object.keys(localStorage);
         notes.forEach(function (note) {
             let inputBox = document.createElement("p");
+            let aiBtn = document.createElement("button");
             inputBox.innerText = localStorage.getItem(note);
             inputBox.dataset.noteNr = note;
             inputBox.className = "input-box";
@@ -45,6 +47,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
             inputBox.appendChild(img);
             notesContainer.appendChild(inputBox);
+
+            aiBtn.textContent = "Generate Test";
+            aiBtn.id = "aiBtn";
+            aiBtn.className = "ai-Btn";
+
+            let aiImg = document.createElement("img");
+            aiImg.src = "/noteapp/images/create.png";
+
+            aiBtn.appendChild(aiImg);
+            notesContainer.appendChild(aiBtn);
+            btnDiv.appendChild(aiBtn);
+            console.log(aiBtn.className);
+
         });
     }
 
@@ -57,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         inputBox.setAttribute("contenteditable", "true");
         let img = document.createElement("img");
         img.src = "/noteapp/images/delete.jpg";
+        
 
         inputBox.appendChild(img);
         notesContainer.appendChild(inputBox);

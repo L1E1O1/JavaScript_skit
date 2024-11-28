@@ -51,7 +51,7 @@ align-items: center;
     
 }
 
-.note-container .buttons .ai-btn{
+.note-container .buttons .ai-Btn{
     display: flex;
     align-items: center;
     background: linear-gradient(#753e07, #b38353);
