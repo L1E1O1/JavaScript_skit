@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     createBtn.addEventListener("click", function () {
         let newNoteNumber = amountOfNotes++;
         let inputBox = document.createElement("p");
+        let aiBtn = document.createElement("button");
         inputBox.dataset.noteNr = "Notes-" + newNoteNumber; //note id
         inputBox.className = "input-box";
         inputBox.setAttribute("contenteditable", "true");
@@ -77,6 +78,18 @@ document.addEventListener("DOMContentLoaded", function () {
         inputBox.appendChild(img);
         notesContainer.appendChild(inputBox);
         updateStorage(inputBox);
+
+        aiBtn.textContent = "Generate Test";
+        aiBtn.id = "aiBtn";
+        aiBtn.className = "ai-Btn";
+
+        let aiImg = document.createElement("img");
+        aiImg.src = "/noteapp/images/create.png";
+
+        aiBtn.appendChild(aiImg);
+        notesContainer.appendChild(aiBtn);
+        btnDiv.appendChild(aiBtn);
+        console.log(aiBtn.className);
     });
 
 
