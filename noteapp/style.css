@@ -14,29 +14,6 @@ align-items: center;
 
 
 
-
-.ai-container{
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(135deg, black, brown);
-    color: #fff;
-    padding-top: 4%;
-    padding-left: 10%;
-    
-}
-
-.ai-container h1{
-    display: flex;
-    align-items: center;
-    font-size: 35px;
-    font-weight: 600;
-}
-
-.ai-container h1 img{
-    width: 60px;
-}
-
-
 .note-container{
     width: 100%;
     min-height: 100vh;
@@ -50,8 +27,23 @@ align-items: center;
     display: flex;
     
 }
-
-.note-container .buttons .ai-Btn{
+/*
+.ai-Btn{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(#753e07, #b38353);
+    color: #fff;
+    font-size: 16px;
+    outline:0;
+    border: 0;
+    border-radius: 40px;
+    padding: 15px 25px;
+    margin:30px 0 20px;
+    cursor: pointer; 
+    margin-left: 18px;
+}
+*/
+.note-container button.ai-Btn{
     display: flex;
     align-items: center;
     background: linear-gradient(#753e07, #b38353);
@@ -76,7 +68,7 @@ align-items: center;
 .note-container h1 img{
     width: 60px;
 }
-.note-container .buttons button img{
+.note-container .buttons button img {
     width: 25px;
     margin-right: 8px;
 }
@@ -116,23 +108,14 @@ align-items: center;
     cursor: pointer;
 }
 
-.ai-input-box{
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    min-height: 150px;
-    background: #fff;
-    color:black;
-    padding:20px;
-    margin: 20px 0 ;
-    outline: none;
-    border-radius: 5px;
-}
 
- .ai-input-box img{
+
+/*.note-container .ai-btn img#createBtn{
     width: 25px;
     position: absolute;
     bottom: 15px;
     right: 15px;
     cursor: pointer;
  }
+    */
+

@@ -52,14 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
             aiBtn.id = "aiBtn";
             aiBtn.className = "ai-Btn";
 
-            let aiImg = document.createElement("img");
-            aiImg.src = "/noteapp/images/create.png";
 
-            aiBtn.appendChild(aiImg);
             notesContainer.appendChild(aiBtn);
+            console.log(btnDiv);
             btnDiv.appendChild(aiBtn);
-            console.log(aiBtn.className);
-
+            console.log(aiImg.id)
         });
     }
 
@@ -68,29 +65,26 @@ document.addEventListener("DOMContentLoaded", function () {
         let newNoteNumber = amountOfNotes++;
         let inputBox = document.createElement("p");
         let aiBtn = document.createElement("button");
-        inputBox.dataset.noteNr = "Notes-" + newNoteNumber; //note id
+    
+        inputBox.dataset.noteNr = "Notes-" + newNoteNumber; // note id
         inputBox.className = "input-box";
         inputBox.setAttribute("contenteditable", "true");
         let img = document.createElement("img");
         img.src = "/noteapp/images/delete.jpg";
-        
-
+    
         inputBox.appendChild(img);
         notesContainer.appendChild(inputBox);
         updateStorage(inputBox);
-
+    
         aiBtn.textContent = "Generate Test";
         aiBtn.id = "aiBtn";
         aiBtn.className = "ai-Btn";
-
-        let aiImg = document.createElement("img");
-        aiImg.src = "/noteapp/images/create.png";
-
-        aiBtn.appendChild(aiImg);
+        aiBtn.dataset.noteId = inputBox.dataset.noteNr; // Associate aiBtn with the note
+    
         notesContainer.appendChild(aiBtn);
         btnDiv.appendChild(aiBtn);
-        console.log(aiBtn.className);
     });
+    
 
 
         //reads the note id when clicked and logs it
@@ -104,17 +98,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // deletes a note and updates local storage when it's done
 
-    notesContainer.addEventListener("click", function (del) {
-        if (del.target.tagName === "IMG") {
-            del.target.parentElement.remove();
-            localStorage.removeItem(del.target.parentElement.dataset.noteNr);
+notesContainer.addEventListener("click", function (del) {
+    if (del.target.tagName === "IMG") {
+        // Remove the note (parent element of the image)
+        const noteElement = del.target.parentElement;
+        const noteId = noteElement.dataset.noteNr;
+
+        // Find and remove the associated aiBtn
+        const associatedAiBtn = document.querySelector(`.ai-Btn[data-note-id="${noteId}"]`);
+        if (associatedAiBtn) {
+            associatedAiBtn.remove();
         }
-        if (del.target.tagName === "P") {
-            del.target.onkeyup = function () {
-                updateStorage(del.target);
-            };
-        }
-    });
+
+        // Remove the note and update local storage
+        noteElement.remove();
+        localStorage.removeItem(noteId);
+    }
+
+    if (del.target.tagName === "P") {
+        del.target.onkeyup = function () {
+            updateStorage(del.target);
+        };
+    }
+});
+
 
 // allows users to press enter to create a new line when editing a note
 
