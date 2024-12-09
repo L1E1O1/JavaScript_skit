@@ -15,35 +15,106 @@
     flex-wrap: wrap;
 }
 
+.music-player{
+    background: purple;
+    width: 400px;
+    padding:25px 35px;
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+nav .circle{
+border-radius: 50%;
+width: 40px;
+height: 40px;
+line-height: 40px;
+background: #fff;
+}
+
+
+
+.song-img{
+    width: 220px;
+    border-radius: 10%;
+    border: 8px solid #fff;
+    box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22)
+
+} 
+
+.music-player h1{
+    font-size: 20px;
+    font-weight: 400;
+    color:#fff;
+    margin-top:20px ;
+}
+
+.music-player p{
+    font-size: 16px;
+    color:#fff;
+}
+#progress{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background:#f53192;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 40px 0;
+}
+
+#progress::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid #f53192;
+}
 
 .controls{
     display: flex;
-    justify-content:space-evenly;
-    padding: 10px;
-}
-
-.controls nav{
-    display: flex;
+    justify-content: center;
     align-items: center;
-    list-style: none;
-}
-.music-player{
-background: #660066;
-width:400px;
-min-height: 60vh;
-padding: 25px 35px;
-text-align: center;
-border-radius: 10px;
+    color:#f53192 ;
 }
 
-.music-player button{
-    margin-bottom: 60px;
-    outline: none;
-    border: 1 px solid black;
+.controls div{
+    width: 60px;
+    height: 60px;
+    margin: 20px;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
-    padding : 5px;
-    background: transparent;
-    color:#fff;
+    box-shadow: 0 10 px 20px;
     cursor: pointer;
-    box-shadow: 5px solid black;
+}
+
+.controls div::nth-child(2){
+transform: scale(1.5);
+background:#f53192 ;
+color: #fff;
+}
+
+
+.bi {
+    display: inline-block;
+    vertical-align: middle;
+    overflow: visible;
+    fill: currentColor;
+}
+
+.bi-play-fill {
+    color:#f53192 ; /* For testing */
+}
+
+.bi-pause-fill {
+    color:#f53192 ; /* For testing */
 }
