@@ -3,7 +3,8 @@ var createBtn;
 var amountOfNotes = 0;
 let highestNoteNumber = 0;
 let aiBtn = document.getElementById('aiBtn');
-let btnDiv = document.querySelector(''.buttons);
+let btnDiv = document.querySelector('.buttons');
+let inputBox = document.createElement("p");
 
 console.log(config.apiKey);
 document.addEventListener("DOMContentLoaded", function () {
@@ -61,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //creates a new note and updates local storage when it's done
     createBtn.addEventListener("click", function () {
         let newNoteNumber = amountOfNotes++;
-        let inputBox = document.createElement("p");
         let aiBtn = document.createElement("button");
     
         inputBox.dataset.noteNr = "Notes-" + newNoteNumber; // note id
@@ -133,12 +133,13 @@ notesContainer.addEventListener("click", function (del) {
 
 //sends notes to AI for to generate AI test
 
-  document.getElementById("aiBtn").addEventListener('click', async function () {
+  document.getElementById("aiBtn").addEventListener('click', async function (e) {
+    let test = e.srcElement.parentElement.innerText
     console.log("AI is generating notes..");
-    const prompt = "can you make a test out of these notes?"; 
+    const prompt = "can you make a test out of these notes?  " + test;  
     const url = `https://api.openai.com/v1/engines/davinci/completions`;
      
-    //console.log (prompt);
+    console.log (prompt);
 
 
 // ska försöka göra en function som creatar ai containern helt
