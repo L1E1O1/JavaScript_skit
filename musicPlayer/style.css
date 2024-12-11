@@ -36,6 +36,14 @@ line-height: 40px;
 background: #fff;
 }
 
+nav .circle button{
+    border: none;
+    outline: none;
+    overflow: hidden;
+    background: transparent;
+    color: black;
+    font-size: 16px;
+}
 
 
 .song-img{
