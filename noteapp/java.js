@@ -3,7 +3,7 @@ var createBtn;
 var amountOfNotes = 0;
 let highestNoteNumber = 0;
 let aiBtn = document.getElementById('aiBtn');
-let btnDiv = document.querySelector('.buttons');
+let btnDiv = document.querySelector(''.buttons);
 
 console.log(config.apiKey);
 document.addEventListener("DOMContentLoaded", function () {
@@ -50,13 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             aiBtn.textContent = "Generate Test";
             aiBtn.id = "aiBtn";
-            aiBtn.className = "ai-Btn";
+            aiBtn.className = "ai-Btn buttons";
 
 
             notesContainer.appendChild(aiBtn);
             console.log(btnDiv);
-            btnDiv.appendChild(aiBtn);
-            console.log(aiImg.id)
         });
     }
 
@@ -82,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
         aiBtn.dataset.noteId = inputBox.dataset.noteNr; // Associate aiBtn with the note
     
         notesContainer.appendChild(aiBtn);
-        btnDiv.appendChild(aiBtn);
     });
     
 
