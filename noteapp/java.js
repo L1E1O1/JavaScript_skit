@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Storage updated");
         console.log(localStorage.getItem(curNotes.dataset.noteNr));
     }
+
+
 //makes sure that you cant create a new note 1 if there is already a note with the same number
 // makes sure to know when a note is deleted and created
     function findHighestNoteNumber() {
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     notesContainer.addEventListener('click', function (event) {
         if (event.target.classList.contains('input-box')) {
             let noteKey = event.target.dataset.noteNr;
-            console.log(noteKey );
+            console.log(noteKey);
         }
     });
 

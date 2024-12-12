@@ -45,6 +45,23 @@ nav .circle button{
     font-size: 16px;
 }
 
+.circle .list-of-songs{
+    display:block;
+    text-align: start;
+    min-width: 200px;
+    min-height: 50vh;
+    max-height: 100vh;
+    background:#fff;
+    overflow: hidden;
+    transform: translate(-100%, -20%);
+    backdrop-filter:blur(40px);
+}
+
+.circle .list-of-songs li{
+    margin: 10px 0 0 22px;
+    overflow: hidden;
+    cursor: pointer;
+}
 
 .song-img{
     width: 220px;
