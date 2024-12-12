@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let song = document.getElementById("song");
     let ctrlIcon = document.getElementById("ctrlIcon");
     let listIcon = document.getElementById("list");
+    const circle = document.getElementById("circle");
+    let count = 0;
     // Update the progress bar every second
 
     // Set the max value for the progress bar once metadata is loaded
@@ -50,6 +52,24 @@ console.log(song.currentTime);
         ctrlIcon.classList.remove("bi-play-fill");
         ctrlIcon.classList.add("bi-pause-fill");
     };
+
+    listIcon.addEventListener("click", function (){
+        var text = document.createTextNode(++count);
+        const songDiv = document.createElement("div");
+        const Ul = document.createElement("ul");
+        const li=document.createElement("li");
+
+        circle.appendChild(songDiv);
+        songDiv.classList.add("list-of-songs");
+        songDiv.appendChild(Ul);
+        Ul.appendChild(li);
+
+        li.innerHTML = "song 1";
+
+        songDiv.classList.add("list-of-songs");
+        console.log(songDiv.parentElement.className);
+
+    })
 });
 
 
