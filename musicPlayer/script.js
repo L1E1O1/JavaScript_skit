@@ -54,22 +54,52 @@ console.log(song.currentTime);
     };
 
     listIcon.addEventListener("click", function (){
-        var text = document.createTextNode(++count);
+
+        listIcon.addEventListener("click", function deleteUI(){
+            listIconClicked = true;
+        })
+
+        let listIconClicked = false;
         const songDiv = document.createElement("div");
         const Ul = document.createElement("ul");
-        const li=document.createElement("li");
+        const li1=document.createElement("li");
+        const li2=document.createElement("li");
+        const li3=document.createElement("li");
+        const li4=document.createElement("li");
+        const li5=document.createElement("li");
 
-        circle.appendChild(songDiv);
-        songDiv.classList.add("list-of-songs");
-        songDiv.appendChild(Ul);
-        Ul.appendChild(li);
 
-        li.innerHTML = "song 1";
 
-        songDiv.classList.add("list-of-songs");
-        console.log(songDiv.parentElement.className);
-
+while (listIconClicked) {
+        if (listIconClicked === true) {
+            listIconClicked = false;
+            circle.removeChild(songDiv);
+        }
+        else {
+            circle.appendChild(songDiv);
+            songDiv.classList.add("list-of-songs");
+            songDiv.appendChild(Ul);
+            Ul.appendChild(li1);
+            Ul.appendChild(li2);
+            Ul.appendChild(li3);
+            Ul.appendChild(li4);
+            Ul.appendChild(li5);
+    
+            li1.innerHTML = "song 1";
+            li2.innerHTML = "song 2";
+            li3.innerHTML = "song 3";
+            li4.innerHTML = "song 4";
+            li5.innerHTML = "song 5";
+    
+            songDiv.classList.add("list-of-songs");
+            console.log(songDiv.parentElement.className);
+            listIconClicked = true;
+        }
+    }
+        console.log(listIconClicked);
     })
+
+
 });
 
 
