@@ -63,7 +63,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //creates a new note and updates local storage when it's done
     createBtn.addEventListener("click", function () {
+        let inputBox = document.createElement("p");
+
         let newNoteNumber = amountOfNotes++;
+        console.log(amountOfNotes)
         let aiBtn = document.createElement("button");
     
         inputBox.dataset.noteNr = "Notes-" + newNoteNumber; // note id
@@ -79,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         aiBtn.textContent = "Generate Test";
         aiBtn.id = "aiBtn";
         aiBtn.className = "ai-Btn";
-        aiBtn.dataset.noteId = inputBox.dataset.noteNr; // Associate aiBtn with the note
+        aiBtn.dataset.noteId = "Notes-" + newNoteNumber; // Associate aiBtn with the note
     
         notesContainer.appendChild(aiBtn);
     });
