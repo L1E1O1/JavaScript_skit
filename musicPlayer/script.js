@@ -1,10 +1,13 @@
+let circle;
+var listIconClicked = true;
 document.addEventListener("DOMContentLoaded", function () {
     let progress = document.getElementById("progress");
     let song = document.getElementById("song");
     let ctrlIcon = document.getElementById("ctrlIcon");
     let listIcon = document.getElementById("list");
-    const circle = document.getElementById("circle");
-    let count = 0;
+    circle = document.getElementById("circle");
+    const songImg = document.querySelector("song-img");
+    const songTitle = document.getElementById("songTitle");
     // Update the progress bar every second
 
     // Set the max value for the progress bar once metadata is loaded
@@ -42,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             progress.value = song.currentTime;
         }
     }, 500);
-console.log(song.currentTime);
+    console.log(song.currentTime);
     // Allow user to change song's current time via progress bar
     progress.onchange = function () {
         song.currentTime = progress.value;
@@ -55,51 +58,68 @@ console.log(song.currentTime);
 
     listIcon.addEventListener("click", function (){
 
-        listIcon.addEventListener("click", function deleteUI(){
-            listIconClicked = true;
-        })
+        listIconClicked = !listIconClicked;
+        
 
-        let listIconClicked = false;
-        const songDiv = document.createElement("div");
-        const Ul = document.createElement("ul");
-        const li1=document.createElement("li");
-        const li2=document.createElement("li");
-        const li3=document.createElement("li");
-        const li4=document.createElement("li");
-        const li5=document.createElement("li");
-
-
-
-while (listIconClicked) {
         if (listIconClicked === true) {
-            listIconClicked = false;
-            circle.removeChild(songDiv);
+            deleteUI();
+            console.log("should have deleted element")
+        
         }
         else {
+            let songs =  ["LD In The Hood", "Sajads Dilemma", "song 3"]
+            let songss = [
+                {
+                    title: "LD In The Hood", 
+                    url:"LD_in_thehood.mp3",
+                    img: "lofi.png"
+                },
+                {
+                    title: "LD In The Hood2", 
+                    url:"LD_in_thehoodddddd.mp3",
+                    img: "lofiiiiii.png"
+                }
+            ]
+            const songDiv = genUI(songss);
             circle.appendChild(songDiv);
-            songDiv.classList.add("list-of-songs");
-            songDiv.appendChild(Ul);
-            Ul.appendChild(li1);
-            Ul.appendChild(li2);
-            Ul.appendChild(li3);
-            Ul.appendChild(li4);
-            Ul.appendChild(li5);
-    
-            li1.innerHTML = "song 1";
-            li2.innerHTML = "song 2";
-            li3.innerHTML = "song 3";
-            li4.innerHTML = "song 4";
-            li5.innerHTML = "song 5";
-    
-            songDiv.classList.add("list-of-songs");
-            console.log(songDiv.parentElement.className);
-            listIconClicked = true;
         }
-    }
-        console.log(listIconClicked);
+
     })
 
 
 });
 
 
+
+function deleteUI(){
+    circle.removeChild(document.querySelector('.list-of-songs'));
+}
+
+function genUI(songs){
+    const songDiv = document.createElement("div");
+    const ul = document.createElement("ul");
+    for(let i=0; i<songs.length; i++){
+        const li = document.createElement("li");
+        li.innerHTML = songs[i].title;
+        ul.appendChild(li);
+        li.addEventListener("click", function(){
+            newSong(songs[i])
+            console.log("clicked");
+        });
+    }
+    songDiv.appendChild(ul);
+    songDiv.classList.add("list-of-songs");
+    return songDiv;
+
+}
+
+function newSong(parameter){
+    // add new song to the list
+    // update UI<a
+    songTitle.innerHTML = parameter.title;
+    console.log(parameter.url)
+    console.log(parameter.img)
+    //songImg.src= parameter.replace("", "-") + (".png");
+    //song.src = parameter.replace("", "-") + (".mp3");
+
+};
