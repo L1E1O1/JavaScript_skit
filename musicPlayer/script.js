@@ -1,13 +1,30 @@
 let circle;
 var listIconClicked = true;
+
+    let songImg = document.querySelector("song-img");
+
+    if (!songImg) {
+        // Create the image dynamically if it's null
+        songImg = document.createElement("img");
+        songImg.id = "song-img";
+        songImg.src = "media/lofi.png"; // Default image
+        songImg.alt = "Song Image";
+
+       
+        
+    }
+
+    console.log("Image added successfully:", songImg);
+
 document.addEventListener("DOMContentLoaded", function () {
     let progress = document.getElementById("progress");
     let song = document.getElementById("song");
     let ctrlIcon = document.getElementById("ctrlIcon");
     let listIcon = document.getElementById("list");
     circle = document.getElementById("circle");
-    const songImg = document.querySelector("song-img");
-    const songTitle = document.getElementById("songTitle");
+
+console.log(songImg);
+   
     // Update the progress bar every second
 
     // Set the max value for the progress bar once metadata is loaded
@@ -15,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         progress.max = song.duration;
         progress.value = song.currentTime;
     };
-
     // Play/Pause button click event
     ctrlIcon.addEventListener("click", function () {
         if (ctrlIcon.classList.contains("bi-play-fill")) {
@@ -45,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
             progress.value = song.currentTime;
         }
     }, 500);
-    console.log(song.currentTime);
     // Allow user to change song's current time via progress bar
     progress.onchange = function () {
         song.currentTime = progress.value;
@@ -72,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 {
                     title: "LD In The Hood", 
                     url:"LD_in_thehood.mp3",
-                    img: "lofi.png"
+                    img: "ld-in-da-hood.png"
                 },
                 {
                     title: "LD In The Hood2", 
@@ -114,12 +129,18 @@ function genUI(songs){
 }
 
 function newSong(parameter){
-    // add new song to the list
-    // update UI<a
+    
     songTitle.innerHTML = parameter.title;
-    console.log(parameter.url)
-    console.log(parameter.img)
-    //songImg.src= parameter.replace("", "-") + (".png");
-    //song.src = parameter.replace("", "-") + (".mp3");
+        songImg.src = parameter.img;
+        console.log(songImg)
+
+    if (songTitle) songTitle.innerHTML = parameter.title;
+    if (songImg) {
+        songImg.src = parameter.img; // Set the new image
+    } else {
+        console.error("songImg element not found.");
+    }
+    console.log("Updated song:", parameter.title);
+
 
 };
