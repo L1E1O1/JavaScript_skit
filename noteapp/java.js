@@ -6,7 +6,7 @@ let aiBtn = document.getElementById('aiBtn');
 let btnDiv = document.querySelector('.buttons');
 let inputBox = document.createElement("p");
 
-console.log(config.apiKey);
+//console.log(config.apiKey);
 document.addEventListener("DOMContentLoaded", function () {
     notesContainer = document.querySelector(".notes-container");
     createBtn = document.querySelector(".notes-btn");
@@ -195,9 +195,4 @@ aiTestContainer.appendChild(aiInputBox);
             }
         
 });
-
-
-
-
-
 });
