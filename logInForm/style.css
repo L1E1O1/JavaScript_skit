@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing:border-box;
+
+}
+
+body{
+    background: linear-gradient(135deg,#050a30,#7ec8e3 );
+    background-repeat: no-repeat;
+}
+
+.container{
+    width: 100%;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    min-height: 500px;
+    width: 38%;
+    border-radius: 10px; /* Optional */
+    overflow: hidden; /* Prevent pseudo-element from overflowing */
+    color:#fff;
+    border-radius:10px; 
+}
+
+.content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:#000c66; /* Fully opaque gradient */
+    filter: blur(10px); /* Apply blur effect */
+    z-index: -1; /* Place behind the content */
+}
+
+.username{
+    padding: 10px 0 10px 0;
+    font-weight: bold;
+
+}
+.password{
+    padding: 10px 0 10px 0;
+    font-weight: bold;
+
+}
+.submit{
+    
+    width:100px;
+    height:40px;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.check-password{
+    padding: 10px 0 10px 0;
+    font-weight: bold;
+}
+
+.title{
+    padding: 10px 0 10px 0;
+}
+input{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
