@@ -138,13 +138,14 @@ notesContainer.addEventListener("click", function (del) {
 
 //sends notes to AI for to generate AI test
 
-  document.getElementById("aiBtn").addEventListener('click', async function (e) {
+  document.getElementById("aiBtn").addEntListener('click', async function (e) {
     let test = e.srcElement.parentElement.innerText
     console.log("AI is generating notes..");
     const prompt = "can you make a test out of these notes?  " + test;  
     const url = `https://api.openai.com/v1/engines/davinci/completions`;
      
     console.log (prompt);
+    console.log("clicked")
 
 
 // ska försöka göra en function som creatar ai containern helt
