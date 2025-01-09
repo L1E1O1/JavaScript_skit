@@ -5,6 +5,7 @@ let highestNoteNumber = 0;
 let aiBtn = document.getElementById('aiBtn');
 let btnDiv = document.querySelector('.buttons');
 let inputBox = document.createElement("p");
+const aiTestContainer = document.getElementById('aiTestContainer');
 
 console.log(config.apiKey);
 document.addEventListener("DOMContentLoaded", function () {
@@ -143,56 +144,32 @@ notesContainer.addEventListener("click", function (del) {
     console.log("AI is generating notes..");
     const prompt = "can you make a test out of these notes?  " + test;  
     const url = `https://api.openai.com/v1/engines/davinci/completions`;
-     
+        
     console.log (prompt);
+    const aiTestContainer = document.getElementById("aiTestContainer");
+    const aiContainer = document.createElement('div');
+    let aiInputBox = document.createElement("p");
 
 
-// ska försöka göra en function som creatar ai containern helt
+    aiContainer.className = 'ai-container';
+    aiInputBox.className = "ai-input-box";
+
+    aiContainer.appendChild(aiTestContainer);
+    aiTestContainer.appendChild(aiInputBox);
 
 
+    const payload = {
+        model: "gpt-3.5-turbo",
+        messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: prompt }
+        ],
+        max_tokens: 200, // Response tokens
+    };
+    console.log("Total tokens:", calculateTokens(prompt) + 200); // Log token estimate
 
-
-   // aiInputBox.innerText = "working";
-    // aiInputBox.setAttribute("contenteditable", "true"); ksk vill ha d vi får se
-   const aiTestContainer = document.getElementById("aiTestContainer");
-   const aiContainer = document.createElement('div');
-   let aiInputBox = document.createElement("p");
-
-
-aiContainer.className = 'ai-container';
-aiInputBox.className = "ai-input-box";
-
-aiContainer.appendChild(aiTestContainer);
-aiTestContainer.appendChild(aiInputBox);
-
-
-      try {
-                const response =  await fetch(url, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": 'Bearer ' + config.apiKey
-                    },
-                    body: JSON.stringify({
-                        model: "gpt-3.5-turbo",
-                        messages: [
-                            { role: "system", content: "You are a helpful assistant." },
-                            { role: "user", content: prompt }
-                        ]
-                    })
-                });
-                
-                if (!response.ok) {
-                    const errorDetails = await response.json();
-                    console.error("Error:", response.status, errorDetails);
-                } else {
-                    const data = await response.json();
-                    console.log("Response:", data);
-                }
-
-            } catch (error) {
-                console.error(error);
-            }
+    const data = await sendRequest(payload);
+    aiInnerHTML();
         
 });
 
@@ -201,3 +178,35 @@ aiTestContainer.appendChild(aiInputBox);
 
 
 });
+
+
+async function sendRequest(payload) {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + config.apiKey,
+        },
+        body: JSON.stringify(payload),
+    });
+
+    if (response.status === 429) {
+        console.error("Rate limit hit. Retrying after 60 seconds...");
+        await new Promise(resolve => setTimeout(resolve, 60000)); // Wait for 60 seconds
+        return sendRequest(payload); // Retry
+    }
+    console.log(await response.json());
+    return response.json();
+}
+
+
+
+//sendRequest(payload);
+
+function calculateTokens(text) {
+    return Math.ceil(text.length / 4);
+}
+
+function aiInnerHTML(){
+    aiTestContainer.innerHTML = data.choices[0].messages.content; 
+}
