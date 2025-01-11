@@ -64,5 +64,7 @@ console.log(randomQuote);
 document.getElementById("qoutes").innerHTML = randomQuote;
 }
 
+
+
 const timer = setInterval(qouteTimer, 30000);
 
