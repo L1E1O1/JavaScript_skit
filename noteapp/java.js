@@ -133,39 +133,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //sends notes to AI for to generate AI test
 
-  document
-    .getElementById("aiBtn")
-    .addEventListener("click", async function (e) {
+    document.getElementById('aiBtn').addEventListener("click", async function (e) {
+      console.log("clicked")
       let test = e.srcElement.parentElement.innerText;
       console.log("AI is generating notes..");
-      const prompt = "can you make a test out of these notes?  " + test;
-      const url = `https://api.openai.com/v1/engines/davinci/completions`;
-
-      console.log(prompt);
-      const aiTestContainer = document.getElementById("aiTestContainer");
-      const aiContainer = document.createElement("div");
-      let aiInputBox = document.createElement("p");
-
-
-      aiContainer.className = "ai-container";
-      aiInputBox.className = "ai-input-box";
-
-      aiContainer.appendChild(aiTestContainer);
-      aiTestContainer.appendChild(aiInputBox);
-
+      const prompt = "Can you make a test out of these notes? " + test;
+    
       const payload = {
         model: "gpt-3.5-turbo",
         messages: [
-          { role: "system", content: "You are a helpful assistant." }, 
+          { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: prompt },
         ],
         max_tokens: 200, // Response tokens
       };
-      console.log("Total tokens:", calculateTokens(prompt) + 200); // Log token estimate
-
-      const data = await sendRequest(payload);
-      aiInnerHTML();
+    
+      try {
+        const data = await sendRequest(payload); // Fetch response from API
+        aiInnerHTML(data); // Pass the response to display
+      } catch (error) {
+        console.error("Error generating AI response:", error);
+      }
     });
+    
 });
 
 async function sendRequest(payload) {
