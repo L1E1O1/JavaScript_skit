@@ -15,5 +15,13 @@ document.addEventListener("DOMContentLoaded", function(){
 context.fillStyle = "#301f9c";
 
         //first 2 is cordinates x, y // de andra två r width och height
-        context.fillRect(0, 0, 500, 500);
+        context.fillRect(300, 0, 100, 100);
+
+        //circle
+context.beginPath();
+context.strokeStyle = "red";
+context.lineWidth = 20; // how thick it is 
+context.arc(100, 100, 50, 0, Math.PI*2, false);
+context.stroke();// makes a stroke no fill
+context.closePath();
 });
