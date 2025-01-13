@@ -183,11 +183,11 @@ function calculateTokens(text) {
   return Math.ceil(text.length / 4);
 }
 
-function aiInnerHTML(data) {
-  let aiOutput = document.createElement("p");
-  aiOutput.innerText = data.choices[0].message.content; // Extract the response
-  const aiTestContainer = document.getElementById("aiTestContainer");
-  aiTestContainer.appendChild(aiOutput); // Append the response to the container
-  console.log("Response from GPT: " + aiOutput.innerText);
-}
+function aiInnerHTML() {
+let aiOutput = document.createElement("p");
+  aiOutput.innerText = data.choices[0].message.content;
+  aiTestContainer.appendChild(aiOutput);
+  console.log("det funkar " + aiOutput.innerText);
 
+ // aiTestContainer.innerHTML = data.choices[0].messages.content;
+}
