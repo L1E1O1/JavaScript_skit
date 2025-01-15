@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
       aiBtn.className = "ai-Btn buttons";
 
       notesContainer.appendChild(aiBtn);
-      console.log(btnDiv);
+
     });
   }
 
@@ -148,12 +148,12 @@ document.addEventListener("DOMContentLoaded", function () {
         max_tokens: 200, // Response tokens
       };
     
-      try {
-        const data = await sendRequest(payload); // Fetch response from API
-        aiInnerHTML(data); // Pass the response to display
-      } catch (error) {
-        console.error("Error generating AI response:", error);
-      }
+
+      console.log("code 1!")
+        const data = await sendRequest(payload); // Fetch response from API 
+        console.log("code 2")
+        aiInnerHTML(data); // pass the data to frontend
+
     });
     
 });
@@ -173,8 +173,9 @@ async function sendRequest(payload) {
     await new Promise((resolve) => setTimeout(resolve, 60000)); // Wait for 60 seconds
     return sendRequest(payload); // Retry
   }
-  console.log(await response.json());
-  return response.json();
+  const data2 = await response.json();
+  console.log(data2);
+  return data2;
 }
 
 //sendRequest(payload);
@@ -189,4 +190,6 @@ function aiInnerHTML(data) {
   const aiTestContainer = document.getElementById("aiTestContainer");
   aiTestContainer.appendChild(aiOutput); // Append the response to the container
   console.log("Response from GPT: " + aiOutput.innerText);
+  notesContainer.appendChild(aiTestContainer)
+
 }

@@ -109,6 +109,10 @@ align-items: center;
 }
 
 
+.ai-test-container{
+backdrop-filter:blur(40px);
+}
+
 
 /*.note-container .ai-btn img#createBtn{
     width: 25px;
